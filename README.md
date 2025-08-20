@@ -29,14 +29,16 @@ Years (1 - 20): 2
 
 # Mortgage
 
-Monthly Payment: \$4,309.97
+Monthly Payment: \$4,320.23
 
 # Payment Schedule
 
-\$95,690.03
-\$91,356.12
-\$87,000.07
+Month   1:  \$95,971.40
+Month   2:  \$91,931.04
+Month   3:  \$87,878.90
 ...
+Month  23:  \$4,307.71
+Month  24:  \$0.00
 
 ````
 
