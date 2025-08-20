@@ -32,7 +32,7 @@ public class Main {
         while (continueProgram) {
             int principal = (int) readNumber("Principal (5,000 - 100,000): ", 5_000, 100_000);
             float annualInterestRate = (float) readNumber(
-                    "Annual Interest Rate ( 1% - 30% ) ---(Please, Enter value -WITHOUT- -> (%) ): ", 1, 30);
+                    "Annual Interest Rate ( 1% - 30% ): ", 1, 30);
             byte years = (byte) readNumber("Years ( 1 - 20 ): ", 1, 20);
 
             printMortgage(principal, annualInterestRate, years);
@@ -149,4 +149,5 @@ public class Main {
 
         return value;
     }
+
 }
