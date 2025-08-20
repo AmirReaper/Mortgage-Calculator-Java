@@ -23,9 +23,9 @@ The user enters the loan amount, annual interest rate, and repayment period, and
 
 ```
 
-Principal (50m - 500m): 100000
-Annual Interest Rate (4% - 25%): 3.5
-Years (1 - 5): 2
+Principal (5,000 - 100,000): 100000
+Annual Interest Rate (1% - 30%): 3.5
+Years (1 - 20): 2
 
 # Mortgage
 
