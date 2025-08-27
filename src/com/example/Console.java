@@ -12,9 +12,9 @@ public class Console {
      * @param max    Maximum allowed value
      * @return Validated user input
      */
+    public static Scanner scanner = new Scanner(System.in);
     public static double readNumber(String prompt, double min, double max) {
         double value;
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine().replace(",", "").trim(); // Remove commas and whitespace
@@ -33,5 +33,8 @@ public class Console {
         }
 
         return value;
+    }
+    public static double readNumber(String prompt) {
+        return scanner.nextDouble();
     }
 }
