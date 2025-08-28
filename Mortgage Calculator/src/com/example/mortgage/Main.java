@@ -1,4 +1,4 @@
-package com.example.mortgage;
+package com.example;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -30,10 +30,10 @@ public class Main {
         boolean continueProgram = true;
 
         while (continueProgram) {
-            int principal = (int) readNumber("Principal (5,000 - 100,000): ", 5_000, 100_000);
-            float annualInterestRate = (float) readNumber(
+            int principal = (int) Console.readNumber("Principal (5,000 - 100,000): ", 5_000, 100_000);
+            float annualInterestRate = (float) Console.readNumber(
                     "Annual Interest Rate ( 1% - 30% ): ", 1, 30);
-            byte years = (byte) readNumber("Years ( 1 - 20 ): ", 1, 20);
+            byte years = (byte) Console.readNumber("Years ( 1 - 20 ): ", 1, 20);
 
             printMortgage(principal, annualInterestRate, years);
             printPaymentSchedule(principal, annualInterestRate, years);
@@ -115,39 +115,6 @@ public class Main {
         return principal *
                 (Math.pow(1 + monthlyInterestRate, totalPayments) - Math.pow(1 + monthlyInterestRate, numberOfPaymentsMade)) /
                 (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
-    }
-
-    /**
-     * Reads a number from user input safely and validates it.
-     * Handles incorrect inputs and numbers outside the specified range.
-     *
-     * @param prompt Message to show the user
-     * @param min    Minimum allowed value
-     * @param max    Maximum allowed value
-     * @return Validated user input
-     */
-    public static double readNumber(String prompt, double min, double max) {
-        Scanner scanner = new Scanner(System.in);
-        double value;
-
-        while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine().replace(",", "").trim(); // Remove commas and whitespace
-            try {
-                value = Double.parseDouble(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number.");
-                continue;
-            }
-
-            if (value >= min && value <= max) {
-                break;
-            } else {
-                System.out.println("Please enter a number between " + min + " and " + max + ".");
-            }
-        }
-
-        return value;
     }
 
 }
