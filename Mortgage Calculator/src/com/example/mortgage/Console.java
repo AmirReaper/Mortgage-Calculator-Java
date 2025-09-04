@@ -2,39 +2,47 @@ package com.example;
 
 import java.util.Scanner;
 
+/**
+ * Console helper for safe numeric input with range validation.
+ */
 public class Console {
-    /**
-     * Reads a number from user input safely and validates it.
-     * Handles incorrect inputs and numbers outside the specified range.
-     *
-     * @param prompt Message to show the user
-     * @param min    Minimum allowed value
-     * @param max    Maximum allowed value
-     * @return Validated user input
-     */
-    public static Scanner scanner = new Scanner(System.in);
-    public static double readNumber(String prompt, double min, double max) {
-        double value;
-        while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine().replace(",", "").trim(); // Remove commas and whitespace
-            try {
-                value = Double.parseDouble(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number.");
-                continue;
-            }
+    private static final Scanner scanner = new Scanner(System.in);
 
-            if (value >= min && value <= max) {
-                break;
-            } else {
-                System.out.println("Please enter a number between " + min + " and " + max + ".");
+    public static double readNumber(String prompt, double min, double max) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = scanner.nextLine().replace(",", "").trim();
+                double value = Double.parseDouble(input);
+                if (value < min || value > max) {
+                    System.out.println("Please enter a number between " + min + " and " + max + ".");
+                    continue;
+                }
+                return value;
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid input. Please enter a valid number.");
             }
         }
-
-        return value;
     }
-    public static double readNumber(String prompt) {
-        return scanner.nextDouble();
+
+    public static String readString(String prompt) {
+        System.out.print(prompt);
+        String s = scanner.nextLine().trim();
+        while (s.isEmpty()) {
+            System.out.println("Input cannot be empty.");
+            System.out.print(prompt);
+            s = scanner.nextLine().trim();
+        }
+        return s;
+    }
+
+    public static String readYesNo(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String s = scanner.nextLine().trim().toLowerCase();
+            if (s.equals("y") || s.equals("yes")) return "yes";
+            if (s.equals("n") || s.equals("no")) return "no";
+            System.out.println("Please enter yes/no (y/n).");
+        }
     }
 }
