@@ -3,7 +3,6 @@
 
 ## 📄 CHANGELOG.md
 
-```markdown
 # Changelog
 
 All notable changes to this project are documented here.
