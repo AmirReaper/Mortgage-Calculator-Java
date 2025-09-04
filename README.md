@@ -1,53 +1,66 @@
-## 📄 Sample README for Mortgage Calculator (Java)
+
+---
+
+## 📘 README.md 
 
 ```markdown
-# 🏦 Mortgage Calculator (Java)
+# 🏦 Mortgage Calculator v2.0.0 (Java, OOP)
 
-This is a simple **Java** program that calculates the monthly payment and the loan repayment plan (Amortization Schedule).  
-The user enters the loan amount, annual interest rate, and repayment period, and the program displays:
-
-- Monthly Payment  
-- Month-by-month Payment Schedule  
+This project is an **Object-Oriented Mortgage Calculator** written in Java.  
+It calculates monthly loan payments and generates an amortization schedule.  
+The project demonstrates **advanced OOP concepts** in a practical, real-world domain.
 
 ---
 
 ## ✨ Features
-- Input validation (Principal, Interest Rate, Years)  
-- Automatic monthly payment calculation using formula  
-- Display of full amortization schedule until the loan is repaid  
-- Clean and modular code (methods used to separate tasks)  
+- Supports **Fixed-Rate** and **Adjustable-Rate** mortgages  
+- **Polymorphism**: work with mortgages via abstract base class  
+- **Inheritance & Abstraction**: common behavior encapsulated in `Mortgage` base class  
+- **Interfaces (Multiple Inheritance)**: 
+  - `Adjustable` → allows interest rate adjustments  
+  - `Exportable` → export reports as text  
+- **Encapsulation & Access Modifiers** (`private`, `protected`, `public`)  
+- **Overriding**: calculation methods differ in subclasses  
+- **Upcasting / Downcasting**: select mortgage type at runtime, safely cast when needed  
+- **Equality**: custom `equals`/`hashCode` for meaningful comparisons  
+- **Final classes** for utility (`MortgageMath`) and domain constants (`MortgagePolicy`)  
+- **Report Layer**: abstract `MortgageReport` decouples business logic from presentation (`ConsoleReport`)  
 
 ---
 
-## 📷 Sample Output
+## 📷 Sample Run
 
 ```
 
-Principal (5,000 - 100,000): 100000
-Annual Interest Rate (1% - 30%): 3.5
-Years (1 - 20): 2
+Principal (5000 - 600000): 100000
+Annual Interest Rate (3 - 50 percent): 5
+Years (1 - 30): 10
+Select Mortgage Type: 1) Fixed  2) Adjustable
+Choice (1-2): 1
+Equal to another mortgage with same terms? true
 
 # Mortgage
 
-Monthly Payment: \$4,320.23
+Type: FixedRateMortgage
+Monthly Payment: \$1,060.66
 
 # Payment Schedule
 
-Month   1:  \$95,971.40
-Month   2:  \$91,931.04
-Month   3:  \$87,878.90
+Month   1:     \$99,356.01
+Month   2:     \$98,709.34
 ...
-Month  23:  \$4,307.71
-Month  24:  \$0.00
+Month 120:     \$0.00
+
+Do you want to calculate again? (y/n):
 
 ````
 
 ---
 
 ## 🛠️ Technologies
-- Java SE (JDK 8+)  
-- IntelliJ IDEA / Eclipse (for development and execution)  
-- Git & GitHub (for version control)  
+- **Java SE (JDK 8+)**  
+- **IntelliJ IDEA / Eclipse** (for development)  
+- **Git & GitHub** (for version control)
 
 ---
 
@@ -57,17 +70,15 @@ Month  24:  \$0.00
    git clone https://github.com/username/mortgage-calculator-java.git
 ````
 
-2. Open the project in your IDE (IntelliJ IDEA or Eclipse).
-3. Run the `Main.java` file.
+2. Open in your IDE.
+3. Run `Main.java`.
 
 ---
 
-## 👤 Author: Amir Reza Tabrizi
+## 👨‍💻 Author
 
-* [Amir Reza Tabrizi](https://github.com/AmirReaper)
+**Amir Reza Tabrizi**
 
----
+* [GitHub Profile](https://github.com/AmirReaper)
 
-### ⭐️ If you found this project useful, please give it a star :)
-
-```
+⭐ If you found this project useful, please give it a star!
