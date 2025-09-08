@@ -32,11 +32,11 @@ The project demonstrates **advanced OOP concepts** in a practical, real-world do
 
 ```
 
-Principal (5000 - 600000): 100000
-Annual Interest Rate (3 - 50 percent): 5
+Principal (5000 - 600000): 100000,
+Annual Interest Rate (3 - 50 percent): 5,
 Years (1 - 30): 10
-Select Mortgage Type: 1) Fixed  2) Adjustable
-Choice (1-2): 1
+Select Mortgage Type: 1) Fixed  2) Adjustable,
+Choice (1-2): 1,
 Equal to another mortgage with same terms? true
 
 # Mortgage
