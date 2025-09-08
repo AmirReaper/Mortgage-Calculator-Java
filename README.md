@@ -67,7 +67,7 @@ Do you want to calculate again? (y/n):
 ## 🚀 How to Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/mortgage-calculator-java.git
+   git clone https://github.com/AmirReaper/mortgage-calculator-java.git
 ````
 
 2. Open in your IDE.
