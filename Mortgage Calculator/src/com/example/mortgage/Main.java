@@ -1,10 +1,10 @@
 package com.example;
 
-import java.util.Locale;
+import java.util.*;
 
 /**
- * Main entry point: demonstrates polymorphism, up/downcasting,
- * access modifiers, equals/hashCode, and uses abstract/report layering.
+ * Main entry point for Mortgage Calculator v2.1.0
+ * - Demonstrates OOP, Exceptions
  */
 public class Main {
     public static void main(String[] args) {
@@ -51,7 +51,7 @@ public class Main {
                             : new AdjustableRateMortgage(principal, annualRate, years);
             System.out.println("Equal to another mortgage with same terms? " + mortgage.equals(sameTerms));
 
-            // --- Downcasting demo: only if adjustable ---
+            // --- Down-casting demo: only if adjustable ---
             if (mortgage instanceof AdjustableRateMortgage arm) { // pattern match downcast
                 String ans = Console.readYesNo("Adjust rate before calculation? (y/n): ");
                 if (ans.equals("yes")) {
@@ -68,10 +68,18 @@ public class Main {
             report.printMortgage();
             report.printPaymentSchedule();
 
+            try {
+                FileReportExporter exporter = new FileReportExporter("mortgage_report.txt");
+                exporter.exportToFile((Exportable) report);
+                System.out.println("Report exported to mortgage_report.txt");
+            } catch (ExportException e) {
+                System.out.println("❌Export failed: " + e.getMessage());
+            }
+
             String again = Console.readYesNo("\nDo you want to calculate again? (y/n): ");
             keepRunning = again.equals("yes");
         }
 
-        System.out.println("Thanks for using the Mortgage Calculator v2.0.0!");
+        System.out.println("Thanks for using the Mortgage Calculator v2.1.0!👋✅");
     }
 }
