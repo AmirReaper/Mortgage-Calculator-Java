@@ -7,7 +7,7 @@ import java.util.Objects;
  * Encapsulates common fields and behavior, and defines a contract
  * for calculating monthly payment and remaining balance.
  */
-public abstract class Mortgage {
+public abstract class Mortgage implements Comparable<Mortgage> {
     private final int principal;
     private float annualInterestPercent; // mutable for adjustable mortgages
     private final byte years;
@@ -24,11 +24,11 @@ public abstract class Mortgage {
 
     protected static void validate(int principal, float rate, byte years) {
         if (principal < MortgagePolicy.MIN_PRINCIPAL || principal > MortgagePolicy.MAX_PRINCIPAL)
-            throw new IllegalArgumentException("Principal out of allowed range.");
+            throw new IllegalArgumentException("❌Principal out of allowed range❌.");
         if (rate < MortgagePolicy.MIN_RATE || rate > MortgagePolicy.MAX_RATE)
-            throw new IllegalArgumentException("Rate out of allowed range.");
+            throw new IllegalArgumentException("❌Rate out of allowed range.❌");
         if (years < MortgagePolicy.MIN_YEARS || years > MortgagePolicy.MAX_YEARS)
-            throw new IllegalArgumentException("Years out of allowed range.");
+            throw new IllegalArgumentException("❌Years out of allowed range.❌");
     }
 
     /** Polymorphic monthly payment calculation. */
@@ -52,7 +52,7 @@ public abstract class Mortgage {
     /** Used by adjustable mortgages to mutate rate safely. */
     protected void setAnnualInterestPercent(float newRate) {
         if (newRate < MortgagePolicy.MIN_RATE || newRate > MortgagePolicy.MAX_RATE)
-            throw new IllegalArgumentException("Adjusted rate out of allowed range.");
+            throw new IllegalArgumentException("❌Adjusted rate out of allowed range.❌");
         this.annualInterestPercent = newRate;
     }
 
@@ -79,5 +79,10 @@ public abstract class Mortgage {
                 " { principal=" + principal +
                 ", rate=" + annualInterestPercent +
                 "%, years=" + years + " }";
+    }
+
+    @Override
+    public int compareTo(Mortgage o) {
+        return Double.compare(this.calculateMonthlyPayment(), o.calculateMonthlyPayment());
     }
 }

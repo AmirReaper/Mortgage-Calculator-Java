@@ -4,6 +4,28 @@
 ## 📘 README.md 
 
 ```markdown
+# 🏦 Mortgage Calculator v2.1.0 – Exceptions
+
+This release introduces **custom exception handling** to the project.
+
+---
+
+## ✨ Features
+- Core OOP mortgage calculator
+- Added custom exceptions:
+    - MortgageNotFoundException (unchecked, runtime)
+    - ExportException (checked, for I/O failures)
+- Improved input validation and error handling
+- File export with try-with-resources
+
+---
+
+## 📚 Learning Goal
+- Understand checked vs unchecked exceptions in Java
+- Apply exceptions in real-world scenarios (file export, validation)
+
+---
+
 # 🏦 Mortgage Calculator v2.0.0 (Java, OOP)
 
 This project is an **Object-Oriented Mortgage Calculator** written in Java.  

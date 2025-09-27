@@ -25,7 +25,7 @@ public final class MortgageMath {
      */
     public static double remainingBalance(int principal, float monthlyRate, int totalPayments, int paid) {
         if (paid < 0 || paid > totalPayments)
-            throw new IllegalArgumentException("Invalid number of payments made.");
+            throw new IllegalArgumentException("❌Invalid number of payments made.❌");
 
         if (monthlyRate == 0f) // zero interest: linear paydown
             return principal * (1 - (double) paid / totalPayments);

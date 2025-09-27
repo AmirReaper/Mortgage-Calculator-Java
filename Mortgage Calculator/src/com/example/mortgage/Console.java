@@ -15,12 +15,12 @@ public class Console {
                 String input = scanner.nextLine().replace(",", "").trim();
                 double value = Double.parseDouble(input);
                 if (value < min || value > max) {
-                    System.out.println("Please enter a number between " + min + " and " + max + ".");
+                    System.out.println("⛔Please enter a number between " + min + " and " + max + ".⛔");
                     continue;
                 }
                 return value;
             } catch (NumberFormatException ex) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("❌Invalid input. Please enter a valid number.❌");
             }
         }
     }
@@ -29,7 +29,7 @@ public class Console {
         System.out.print(prompt);
         String s = scanner.nextLine().trim();
         while (s.isEmpty()) {
-            System.out.println("Input cannot be empty.");
+            System.out.println("📛Input cannot be empty.📛");
             System.out.print(prompt);
             s = scanner.nextLine().trim();
         }
@@ -42,7 +42,7 @@ public class Console {
             String s = scanner.nextLine().trim().toLowerCase();
             if (s.equals("y") || s.equals("yes")) return "yes";
             if (s.equals("n") || s.equals("no")) return "no";
-            System.out.println("Please enter yes/no (y/n).");
+            System.out.println("⛔Please enter yes/no (y/n).⛔");
         }
     }
 }
