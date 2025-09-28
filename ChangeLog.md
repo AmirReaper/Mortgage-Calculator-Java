@@ -9,6 +9,27 @@ All notable changes to this project are documented here.
 
 ---
 
+## [2.1.0] - 2025-09-27
+### Added
+- **Exception Handling**: Comprehensive exception management system
+- **Custom Exceptions**:
+    - `MortgageNotFoundException`: Unchecked exception for repository lookups
+    - `ExportException`: Checked exception for file operation failures
+- **Robust Input Validation**: Enhanced Console class with proper error handling
+- **File Export Safety**: `try-with-resources` implementation in FileReportExporter
+
+### Enhanced
+- **Error Recovery**: Graceful handling of file export failures
+- **User Experience**: Friendly error messages for invalid inputs
+- **Resource Management**: Automatic resource cleanup with try-with-resources
+- **Validation**: Comprehensive input validation with meaningful exceptions
+
+### Security
+- **File Safety**: Proper exception handling for all file operations
+- **Input Sanitization**: Protection against invalid user input
+
+---
+
 ## [2.0.0] - 2025-09-05
 ### Added
 - Introduced **abstract base class `Mortgage`** with validation, encapsulation, and common logic.
