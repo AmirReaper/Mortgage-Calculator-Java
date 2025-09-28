@@ -4,49 +4,25 @@
 ## 📘 README.md 
 
 ```markdown
-# 🏦 Mortgage Calculator v2.1.0 – Exceptions
+# 🏦 Mortgage Calculator v2.2.0 – Generics
 
-This release introduces **custom exception handling** to the project.
+This release extends the project with **Generics** features.
 
----
+## ✨ New Features
+- All features from v2.1.0 (Exceptions)
+- **Generic Repository<T, ID> interface**
+- **MortgageRepository implementation** with Iterable<Mortgage> support
+- **GenericUtils** with:
+    - `findMax(List<T>)` with bounded types
+    - `swap(List<T>, i, j)` method
+    - `totalPaymentsWildcard(List<? extends Mortgage>)` with wildcards
+- **MortgageComparators** factory for sorting
 
-## ✨ Features
-- Core OOP mortgage calculator
-- Added custom exceptions:
-    - MortgageNotFoundException (unchecked, runtime)
-    - ExportException (checked, for I/O failures)
-- Improved input validation and error handling
-- File export with try-with-resources
-
----
-
-## 📚 Learning Goal
-- Understand checked vs unchecked exceptions in Java
-- Apply exceptions in real-world scenarios (file export, validation)
-
----
-
-# 🏦 Mortgage Calculator v2.0.0 (Java, OOP)
-
-This project is an **Object-Oriented Mortgage Calculator** written in Java.  
-It calculates monthly loan payments and generates an amortization schedule.  
-The project demonstrates **advanced OOP concepts** in a practical, real-world domain.
-
----
-
-## ✨ Features
-- Supports **Fixed-Rate** and **Adjustable-Rate** mortgages  
-- **Polymorphism**: work with mortgages via abstract base class  
-- **Inheritance & Abstraction**: common behavior encapsulated in `Mortgage` base class  
-- **Interfaces (Multiple Inheritance)**: 
-  - `Adjustable` → allows interest rate adjustments  
-  - `Exportable` → export reports as text  
-- **Encapsulation & Access Modifiers** (`private`, `protected`, `public`)  
-- **Overriding**: calculation methods differ in subclasses  
-- **Upcasting / Downcasting**: select mortgage type at runtime, safely cast when needed  
-- **Equality**: custom `equals`/`hashCode` for meaningful comparisons  
-- **Final classes** for utility (`MortgageMath`) and domain constants (`MortgagePolicy`)  
-- **Report Layer**: abstract `MortgageReport` decouples business logic from presentation (`ConsoleReport`)  
+## 📚 Learning Goals
+- Master type parameters and bounded types
+- Implement reusable generic repositories
+- Explore wildcard generics for collections
+- Understand generic methods and type inference
 
 ---
 
@@ -74,6 +50,28 @@ Month   2:     \$98,709.34
 Month 120:     \$0.00
 
 Do you want to calculate again? (y/n):
+
+---
+
+# 🔬 Generics Demo Output
+
+--- DEMO: Generics Features ---
+All mortgages in repository:
+- FixedRateMortgage { principal= 100000, rate= 5%, years= 1 }
+- AdjustableRateMortgage { principal= 150000, rate= 4.5%, years= 2 }
+
+Most expensive mortgage (using GenericUtils.findMax): 
+FixedRateMortgage { principal= 100000, rate= 5%, years= 1 }
+Total monthly payments (using wildcard): $1,060.66
+
+# 🏗️ Enhanced Project Structure
+
+src/com/example/
+├── [All v2.1.0 files...]
+├── Repository.java           # Generic repository interface
+├── MortgageRepository.java   # Repository implementation  
+├── GenericUtils.java         # Generic utility methods
+└── MortgageComparators.java  # Comparator factory
 
 ````
 
