@@ -9,6 +9,29 @@ All notable changes to this project are documented here.
 
 ---
 
+## [2.2.0] - 2025-09-27
+### Added
+- **Generics Implementation**: Full generics support throughout the application
+- **Generic Repository Pattern**: `Repository<T, ID>` interface with type parameters
+- **MortgageRepository**: Concrete implementation with `Iterable<Mortgage>` support
+- **GenericUtils Class**: Utility methods demonstrating advanced generics:
+    - `findMax(List<T>)`: Bounded type parameters with `Comparable<T>`
+    - `swap(List<T>, i, j)`: Generic method for element swapping
+    - `totalPaymentsWildcard(List<? extends Mortgage>)`: Wildcard usage demonstration
+- **MortgageComparators**: Factory class for flexible sorting strategies
+
+### Enhanced
+- **Type Safety**: Compile-time type checking throughout the codebase
+- **Code Reusability**: Generic components that can work with any entity type
+- **Flexible Sorting**: Multiple comparison strategies for mortgages
+
+### Demo Features
+- **Generics Demo**: New `demoGenericsFeatures()` method in Main
+- **Repository Usage**: Type-safe storage and retrieval operations
+- **Utility Methods**: Practical examples of generic methods in action
+
+---
+
 ## [2.1.0] - 2025-09-27
 ### Added
 - **Exception Handling**: Comprehensive exception management system
