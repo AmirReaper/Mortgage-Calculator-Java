@@ -1,12 +1,15 @@
 package com.example;
 
+import java.text.NumberFormat;
 import java.util.*;
 
 /**
- * Main entry point for Mortgage Calculator v2.1.0
- * - Demonstrates OOP, Exceptions
+ * Main entry point for Mortgage Calculator v2.2.0
+ * - Demonstrates OOP, Exceptions, Generics
  */
 public class Main {
+    private static final MortgageRepository userMortgages = new MortgageRepository();
+
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         runMortgageCalculator();
@@ -44,6 +47,9 @@ public class Main {
                 mortgage = new AdjustableRateMortgage(principal, annualRate, years); // upcast to Mortgage
             }
 
+            // Save user loan in Repository
+            userMortgages.add(mortgage);
+
             // Example: equals/hashCode semantics (same terms & same class → equal)
             Mortgage sameTerms =
                     (type == 1)
@@ -68,6 +74,10 @@ public class Main {
             report.printMortgage();
             report.printPaymentSchedule();
 
+            // --- Show comparison with the user's previous loans
+            showComparisonWithPrevious(mortgage);
+
+            // export file
             try {
                 FileReportExporter exporter = new FileReportExporter("mortgage_report.txt");
                 exporter.exportToFile((Exportable) report);
@@ -80,6 +90,62 @@ public class Main {
             keepRunning = again.equals("yes");
         }
 
+        showFinalSummary();
         System.out.println("Thanks for using the Mortgage Calculator v2.1.0!👋✅");
+    }
+
+    /**
+     * Compare current loan with user's previous loans
+     */
+    private static void showComparisonWithPrevious(Mortgage currentMortgage) {
+        if (userMortgages.getAll().size() > 1) {
+            System.out.println("\n--- Comparison with Your Previous Calculations ---");
+
+            // Find the user's most expensive loan
+            List<Mortgage> allExceptCurrent = new ArrayList<>(userMortgages.getAll());
+            allExceptCurrent.remove(currentMortgage);
+
+
+            if (!allExceptCurrent.isEmpty()) {
+                Mortgage mostExpensive = GenericUtils.findMax(allExceptCurrent);
+                System.out.println("Your most expensive previous mortgage: " + mostExpensive);
+
+                // Compare to current loan
+                if (currentMortgage.calculateMonthlyPayment() > mostExpensive.calculateMonthlyPayment()) {
+                    System.out.println("⚠️  This is your MOST expensive mortgage so far!");
+                }
+            }
+        }
+    }
+
+    /**
+     * Final summary when user exits
+     */
+    private static void showFinalSummary() {
+        if (!userMortgages.getAll().isEmpty()) {
+            System.out.println("\n" + "=".repeat(50));
+            System.out.println("📊 FINAL SUMMARY");
+            System.out.println("=".repeat(50));
+
+            System.out.println("Total mortgages calculated: " + userMortgages.getAll().size());
+
+            // Use GenericUtils to calculate the sum
+            double totalMonthlyPayments = GenericUtils.totalPaymentsWildcard(userMortgages.getAll());
+            System.out.println("Total monthly payments across all mortgages: " +
+                    NumberFormat.getCurrencyInstance().format(totalMonthlyPayments));
+
+            // Sorting with Comparators
+            if (userMortgages.getAll().size() > 1) {
+                System.out.println("\nMortgages sorted by amount (low to high):");
+                userMortgages.getAll().stream()
+                        .sorted(MortgageComparators.byPrincipal())
+                        .forEach(m -> System.out.println("  • " + m));
+
+                System.out.println("\nMortgages sorted by interest rate (low to high):");
+                userMortgages.getAll().stream()
+                        .sorted(MortgageComparators.byRate())
+                        .forEach(m -> System.out.println("  • " + m.getAnnualInterestPercent() + "% - $" + m.getPrincipal()));
+            }
+        }
     }
 }
