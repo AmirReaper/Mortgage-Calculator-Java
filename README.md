@@ -4,27 +4,62 @@
 ## 📘 README.md 
 
 ```markdown
-# 🏦 Mortgage Calculator v2.3.0 – Collections Framework
+# 🏦 Mortgage Calculator v2.3.1 – Professional Architecture
 
-This release integrates the **Java Collections Framework** with practical, user-focused demonstrations.
+This release focuses on **code quality and maintainability** through comprehensive refactoring.
 
-## ✨ Enhanced Features
-- All features from v2.2.0 (Generics)
-  - **Collections Framework Integration**:
-   - **List**: Ordered storage with `ArrayList` in MortgageRepository
-   - **Set**: Duplicate removal with `HashSet` based on equals/hashCode
-   - **Queue**: FIFO processing simulation with `LinkedList`
-   - **Map**: Key-value lookup with `HashMap` using hashCode
-   - **Streams**: Functional processing with filtering and sorting
-   - **Advanced Sorting**: Multiple comparator strategies with real user data
-   - **Aggregate Calculations**: Statistical analysis of user's mortgage portfolio
+---
 
-## 📚 Learning Goals
-- Master Java Collections Framework in practical scenarios
-- Understand different collection types and their use cases
-- Practice Stream API for functional operations
-- Implement sorting with custom Comparators on real data
-- Learn iteration patterns with enhanced for-loops and streams
+## ✨ Architectural Improvements
+- All features from v2.3.0 (Collections)
+- **Layered Package Structure**: Organized code into logical packages
+- **Separation of Concerns**: Each class has a single, clear responsibility
+- **Single Responsibility Principle**: Clean separation of business logic
+- **Improved Maintainability**: Easier to test, modify, and extend
+
+---
+
+## 🏗️ Professional Package Structure
+
+src/com/example/
+├── app/ # Application Layer
+│ ├── Main.java # Minimal entry point
+│ ├── MortgageApp.java # Workflow orchestrator
+│ ├── MortgageInputHandler.java # User input management
+│ ├── MortgageComparatorService.java # Comparison logic
+│ ├── MortgageAdjuster.java # ARM rate adjustments
+│ └── MortgageReportService.java # Report generation
+├── model/ # Domain Models
+│ ├── Mortgage.java
+│ ├── FixedRateMortgage.java
+│ ├── AdjustableRateMortgage.java
+│ └── Adjustable.java
+├── service/ # Business Services
+│ ├── Console.java
+│ ├── ConsoleReport.java
+│ ├── Exportable.java
+│ ├── FileReportExporter.java
+│ └── MortgageReport.java
+├── util/ # Utilities
+│ ├── MortgageMath.java
+│ ├── MortgagePolicy.java
+│ ├── GenericUtils.java
+│ └── MortgageComparators.java
+├── repository/ # Data Access
+│ ├── Repository.java
+│ └── MortgageRepository.java
+└── exception/ # Custom Exceptions
+├── MortgageNotFoundException.java
+└── ExportException.java
+
+---
+
+## 📚 Architecture Benefits
+- **Testability**: Each service can be unit tested independently
+- **Readability**: Clear separation of responsibilities
+- **Scalability**: Easy to add new features without breaking existing code
+- **Reusability**: Services can be reused across different application parts
+- **Maintainability**: Changes are isolated to specific layers
 
 ---
 
@@ -94,16 +129,28 @@ This release integrates the **Java Collections Framework** with practical, user-
 ---
 
 ## 🚀 How to Run
+```bash
+# Compile all packages
+javac -d out src/com/example/app/*.java src/com/example/model/*.java src/com/example/service/*.java src/com/example/util/*.java src/com/example/repository/*.java src/com/example/exception/*.java
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/AmirReaper/mortgage-calculator-java.git
-````
-
-    2. Open in your IDE.
-    3. Run `Main.java`.
+# Run
+java -cp out com.example.app.Main
 
 ---
+
+💡 Key Architectural Concepts
+
+- Single Responsibility Principle: Each class has one reason to change
+
+- Separation of Concerns: Different layers handle different aspects
+
+- Dependency Management: Clear dependencies between layers
+
+- Clean Architecture: Organized by business domain rather than technical concerns
+
+# 🎯 Real-World Application
+
+- This structure mirrors professional enterprise applications, making it excellent preparation for real-world Java development roles.
 
 ## 👨‍💻 Author
 

@@ -9,6 +9,33 @@ All notable changes to this project are documented here.
 
 ---
 
+## [2.3.1] - 2025-09-27
+### Added
+- **Layered Package Structure**: Professional organization into logical packages
+- **Application Layer**: `app/` package with workflow orchestration
+- **Domain Layer**: `model/` package with business entities
+- **Service Layer**: `service/` package with business operations
+- **Utility Layer**: `util/` package with helper classes
+- **Data Layer**: `repository/` package with data access patterns
+- **Exception Layer**: `exception/` package with custom exceptions
+
+### Refactored
+- **Separation of Concerns**: Split monolithic Main into focused services
+- **Single Responsibility**: Each class has one clear purpose
+- **MortgageApp**: Main workflow orchestrator
+- **MortgageInputHandler**: User input and mortgage creation
+- **MortgageComparatorService**: Comparison and collections logic
+- **MortgageAdjuster**: Adjustable rate modifications
+- **MortgageReportService**: Report generation management
+
+### Architecture
+- **Clean Architecture**: Organized by business domain
+- **Maintainability**: Easy to modify and extend individual components
+- **Testability**: Independent unit testing of each layer
+- **Scalability**: Foundation for enterprise application growth
+
+---
+
 ## [2.3.0] - 2025-09-27
 ### Added
 - **Collections Framework Integration**: Practical implementation with user data
