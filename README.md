@@ -6,25 +6,25 @@
 ```markdown
 # 🏦 Mortgage Calculator v2.3.0 – Collections Framework
 
-    This release integrates the **Java Collections Framework** with practical, user-focused demonstrations.
+This release integrates the **Java Collections Framework** with practical, user-focused demonstrations.
 
 ## ✨ Enhanced Features
-    - All features from v2.2.0 (Generics)
-    - **Collections Framework Integration**:
-        - **List**: Ordered storage with `ArrayList` in MortgageRepository
-        - **Set**: Duplicate removal with `HashSet` based on equals/hashCode
-        - **Queue**: FIFO processing simulation with `LinkedList`
-        - **Map**: Key-value lookup with `HashMap` using hashCode
-        - **Streams**: Functional processing with filtering and sorting
-    - **Advanced Sorting**: Multiple comparator strategies with real user data
-    - **Aggregate Calculations**: Statistical analysis of user's mortgage portfolio
+- All features from v2.2.0 (Generics)
+  - **Collections Framework Integration**:
+   - **List**: Ordered storage with `ArrayList` in MortgageRepository
+   - **Set**: Duplicate removal with `HashSet` based on equals/hashCode
+   - **Queue**: FIFO processing simulation with `LinkedList`
+   - **Map**: Key-value lookup with `HashMap` using hashCode
+   - **Streams**: Functional processing with filtering and sorting
+   - **Advanced Sorting**: Multiple comparator strategies with real user data
+   - **Aggregate Calculations**: Statistical analysis of user's mortgage portfolio
 
 ## 📚 Learning Goals
-    - Master Java Collections Framework in practical scenarios
-    - Understand different collection types and their use cases
-    - Practice Stream API for functional operations
-    - Implement sorting with custom Comparators on real data
-    - Learn iteration patterns with enhanced for-loops and streams
+- Master Java Collections Framework in practical scenarios
+- Understand different collection types and their use cases
+- Practice Stream API for functional operations
+- Implement sorting with custom Comparators on real data
+- Learn iteration patterns with enhanced for-loops and streams
 
 ---
 
@@ -86,6 +86,7 @@
 ---
 
 ## 🛠️ Technologies
+
 - **Java SE (JDK 8+)**  
 - **IntelliJ IDEA / Eclipse** (for development)  
 - **Git & GitHub** (for version control)
@@ -93,6 +94,7 @@
 ---
 
 ## 🚀 How to Run
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/AmirReaper/mortgage-calculator-java.git
@@ -105,8 +107,8 @@
 
 ## 👨‍💻 Author
 
-    **Amir Reza Tabrizi**
+**Amir Reza Tabrizi**
 
-    * [GitHub Profile](https://github.com/AmirReaper)
+* [GitHub Profile](https://github.com/AmirReaper)
 
 ⭐ If you found this project useful, please give it a star!
