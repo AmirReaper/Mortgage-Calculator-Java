@@ -1,4 +1,6 @@
-package com.example;
+package com.example.service;
+
+import com.example.model.Mortgage;
 
 /**
  * Concrete report that prints to the console.
@@ -23,8 +25,9 @@ public class ConsoleReport extends MortgageReport implements Exportable {
     public void printPaymentSchedule() {
         System.out.println("\nPayment Schedule");
         System.out.println("=======================================");
-        int total = mortgage instanceof Mortgage m ? m.totalPayments() : 0;
-        for (int month = 1; month <= total; month++) {
+
+        int totalMonths = mortgage.getYears() * 12;
+        for (int month = 1; month <= totalMonths; month++) {
             double balance = mortgage.calculateBalance(month);
             System.out.printf("Month %3d: %15s%n", month, currency.format(balance));
         }
@@ -37,8 +40,9 @@ public class ConsoleReport extends MortgageReport implements Exportable {
         sb.append("Type: ").append(mortgage.getClass().getSimpleName()).append('\n');
         sb.append("Monthly Payment: ").append(currency.format(mp)).append('\n');
         sb.append("Payment Schedule:\n");
-        int total = mortgage instanceof Mortgage m ? m.totalPayments() : 0;
-        for (int month = 1; month <= total; month++) {
+
+        int totalMonths = mortgage.getYears() * 12;
+        for (int month = 1; month <= totalMonths; month++) {
             double balance = mortgage.calculateBalance(month);
             sb.append(String.format("Month %3d: %s%n", month, currency.format(balance)));
         }

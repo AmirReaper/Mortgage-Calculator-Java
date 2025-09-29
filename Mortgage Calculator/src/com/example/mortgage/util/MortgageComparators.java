@@ -1,4 +1,6 @@
-package com.example;
+package com.example.util;
+
+import com.example.model.Mortgage;
 
 import java.util.Comparator;
 

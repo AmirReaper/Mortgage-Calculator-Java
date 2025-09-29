@@ -1,4 +1,4 @@
-package com.example;
+package com.example.util;
 
 /**
  * Final policy class holding domain validation constants.

@@ -1,4 +1,4 @@
-package com.example;
+package com.example.model;
 
 /**
  * Interface for adjustable-rate behavior (simulates multiple inheritance).

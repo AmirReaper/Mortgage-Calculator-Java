@@ -1,4 +1,4 @@
-package com.example;
+package com.example.util;
 
 /**
  * Final math utility class for mortgage formulas.

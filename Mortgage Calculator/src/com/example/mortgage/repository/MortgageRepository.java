@@ -1,4 +1,7 @@
-package com.example;
+package com.example.repository;
+
+import com.example.exception.MortgageNotFoundException;
+import com.example.model.Mortgage;
 
 import java.util.*;
 

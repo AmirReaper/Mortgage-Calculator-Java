@@ -1,4 +1,6 @@
-package com.example;
+package com.example.model;
+
+import com.example.util.MortgageMath;
 
 /**
  * Standard fixed-rate mortgage: uses a single fixed annual rate for

@@ -1,4 +1,6 @@
-package com.example;
+package com.example.model;
+
+import com.example.util.MortgagePolicy;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.example;
+package com.example.exception;
 
 /**
  * Custom unchecked exception when mortgage is not found.

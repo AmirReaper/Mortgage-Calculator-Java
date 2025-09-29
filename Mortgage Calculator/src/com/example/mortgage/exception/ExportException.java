@@ -1,4 +1,4 @@
-package com.example;
+package com.example.exception;
 
 /**
  * Custom checked exception for report export failures.
