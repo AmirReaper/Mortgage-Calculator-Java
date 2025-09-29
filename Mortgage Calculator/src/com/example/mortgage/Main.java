@@ -4,8 +4,8 @@ import java.text.NumberFormat;
 import java.util.*;
 
 /**
- * Main entry point for Mortgage Calculator v2.2.0
- * - Demonstrates OOP, Exceptions, Generics
+ * Main entry point for Mortgage Calculator v2.3.0
+ * - Demonstrates OOP, Exceptions, Generics, Collections
  */
 public class Main {
     private static final MortgageRepository userMortgages = new MortgageRepository();
@@ -91,7 +91,7 @@ public class Main {
         }
 
         showFinalSummary();
-        System.out.println("Thanks for using the Mortgage Calculator v2.1.0!👋✅");
+        System.out.println("Thanks for using the Mortgage Calculator v2.3.0!👋✅");
     }
 
     /**
@@ -107,6 +107,7 @@ public class Main {
 
 
             if (!allExceptCurrent.isEmpty()) {
+                // Use GenericUtils.findMax(Generics + Collections)
                 Mortgage mostExpensive = GenericUtils.findMax(allExceptCurrent);
                 System.out.println("Your most expensive previous mortgage: " + mostExpensive);
 
@@ -114,38 +115,92 @@ public class Main {
                 if (currentMortgage.calculateMonthlyPayment() > mostExpensive.calculateMonthlyPayment()) {
                     System.out.println("⚠️  This is your MOST expensive mortgage so far!");
                 }
+
+                // Finding the cheapest loan with Stream min
+                Mortgage cheapest = allExceptCurrent.stream()
+                        .min(MortgageComparators.byPrincipal())
+                        .orElse(null);
+                if (cheapest != null) {
+                    System.out.println("Your cheapest previous mortgage: " + cheapest);
+                }
             }
         }
     }
 
     /**
-     * Final summary when user exits
+     * Final summary using Collections types
      */
     private static void showFinalSummary() {
         if (!userMortgages.getAll().isEmpty()) {
             System.out.println("\n" + "=".repeat(50));
-            System.out.println("📊 FINAL SUMMARY");
+            System.out.println("📊 FINAL SUMMARY (Collections Demo)");
             System.out.println("=".repeat(50));
 
-            System.out.println("Total mortgages calculated: " + userMortgages.getAll().size());
+            // 1. LIST OPERATIONS - Show all loans
+            System.out.println("1. All your mortgages (List - maintains order):");
+            for (Mortgage mortgage : userMortgages) { // Iterable usage
+                System.out.println("   📝 " + mortgage);
+            }
 
-            // Use GenericUtils to calculate the sum
+            // 2. SET OPERATIONS - Remove duplicates (based on equals/hashCode)
+            System.out.println("\n2. Unique mortgages (Set - removes duplicates):");
+            Set<Mortgage> uniqueMortgages = new HashSet<>(userMortgages.getAll());
+            uniqueMortgages.forEach(m -> System.out.println("   🔄 " + m));
+            System.out.println("   Original: " + userMortgages.getAll().size() +
+                    ", Unique: " + uniqueMortgages.size());
+
+            // 3. QUEUE OPERATIONS - FIFO processing
+            System.out.println("\n3. Processing queue (Queue - FIFO order):");
+            Queue<Mortgage> processingQueue = new LinkedList<>(userMortgages.getAll());
+            int queueNumber = 1;
+            while (!processingQueue.isEmpty()) {
+                Mortgage nextInQueue = processingQueue.poll();
+                System.out.println("   🎯 Processing #" + queueNumber++ + ": " + nextInQueue);
+            }
+
+            // 4. MAP OPERATIONS - Fast search with hashCode
+            System.out.println("\n4. Quick lookup (Map - by hashCode):");
+            Map<Integer, Mortgage> mortgageMap = new HashMap<>();
+            for (Mortgage mortgage : userMortgages.getAll()) {
+                mortgageMap.put(mortgage.hashCode(), mortgage);
+                System.out.println("   🔑 Key: " + mortgage.hashCode() +
+                        " → " + mortgage.getClass().getSimpleName());
+            }
+
+            // 5. STREAM OPERATIONS - Sorting and Filtering
+            System.out.println("\n5. Advanced sorting (Streams + Comparators):");
+
+            System.out.println("   Sorted by amount (low to high):");
+            userMortgages.getAll().stream()
+                    .sorted(MortgageComparators.byPrincipal())
+                    .forEach(m -> System.out.println("      💰 " + m.getPrincipal() + " - " + m.getAnnualInterestPercent() + "%"));
+
+            System.out.println("   Sorted by interest rate (low to high):");
+            userMortgages.getAll().stream()
+                    .sorted(MortgageComparators.byRate())
+                    .forEach(m -> System.out.println("      📈 " + m.getAnnualInterestPercent() + "% - $" + m.getPrincipal()));
+
+            System.out.println("   High-interest mortgages (> 4.5%):");
+            userMortgages.getAll().stream()
+                    .filter(m -> m.getAnnualInterestPercent() > 4.5)
+                    .sorted(MortgageComparators.byRate())
+                    .forEach(m -> System.out.println("      ⚠️  " + m.getAnnualInterestPercent() + "% - $" + m.getPrincipal()));
+
+            // 6. AGGREGATE OPERATIONS - Using GenericUtils
+            System.out.println("\n6. Aggregate calculations:");
             double totalMonthlyPayments = GenericUtils.totalPaymentsWildcard(userMortgages.getAll());
-            System.out.println("Total monthly payments across all mortgages: " +
+            System.out.println("   Total monthly payments: " +
                     NumberFormat.getCurrencyInstance().format(totalMonthlyPayments));
 
-            // Sorting with Comparators
-            if (userMortgages.getAll().size() > 1) {
-                System.out.println("\nMortgages sorted by amount (low to high):");
-                userMortgages.getAll().stream()
-                        .sorted(MortgageComparators.byPrincipal())
-                        .forEach(m -> System.out.println("  • " + m));
+            Mortgage mostExpensiveOverall = GenericUtils.findMax(userMortgages.getAll());
+            System.out.println("   Most expensive overall: " + mostExpensiveOverall);
 
-                System.out.println("\nMortgages sorted by interest rate (low to high):");
-                userMortgages.getAll().stream()
-                        .sorted(MortgageComparators.byRate())
-                        .forEach(m -> System.out.println("  • " + m.getAnnualInterestPercent() + "% - $" + m.getPrincipal()));
-            }
+            double averagePrincipal = userMortgages.getAll().stream()
+                    .mapToInt(Mortgage::getPrincipal)
+                    .average()
+                    .orElse(0);
+            System.out.println("   Average principal: " +
+                    NumberFormat.getCurrencyInstance().format(averagePrincipal));
         }
     }
 }
