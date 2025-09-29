@@ -4,25 +4,27 @@
 ## 📘 README.md 
 
 ```markdown
-# 🏦 Mortgage Calculator v2.2.0 – Generics
+# 🏦 Mortgage Calculator v2.3.0 – Collections Framework
 
-This release extends the project with **Generics** features.
+    This release integrates the **Java Collections Framework** with practical, user-focused demonstrations.
 
-## ✨ New Features
-- All features from v2.1.0 (Exceptions)
-- **Generic Repository<T, ID> interface**
-- **MortgageRepository implementation** with Iterable<Mortgage> support
-- **GenericUtils** with:
-    - `findMax(List<T>)` with bounded types
-    - `swap(List<T>, i, j)` method
-    - `totalPaymentsWildcard(List<? extends Mortgage>)` with wildcards
-- **MortgageComparators** factory for sorting
+## ✨ Enhanced Features
+    - All features from v2.2.0 (Generics)
+    - **Collections Framework Integration**:
+        - **List**: Ordered storage with `ArrayList` in MortgageRepository
+        - **Set**: Duplicate removal with `HashSet` based on equals/hashCode
+        - **Queue**: FIFO processing simulation with `LinkedList`
+        - **Map**: Key-value lookup with `HashMap` using hashCode
+        - **Streams**: Functional processing with filtering and sorting
+    - **Advanced Sorting**: Multiple comparator strategies with real user data
+    - **Aggregate Calculations**: Statistical analysis of user's mortgage portfolio
 
 ## 📚 Learning Goals
-- Master type parameters and bounded types
-- Implement reusable generic repositories
-- Explore wildcard generics for collections
-- Understand generic methods and type inference
+    - Master Java Collections Framework in practical scenarios
+    - Understand different collection types and their use cases
+    - Practice Stream API for functional operations
+    - Implement sorting with custom Comparators on real data
+    - Learn iteration patterns with enhanced for-loops and streams
 
 ---
 
@@ -30,48 +32,54 @@ This release extends the project with **Generics** features.
 
 ```
 
-Principal (5000 - 600000): 100000,
-Annual Interest Rate (3 - 50 percent): 5,
-Years (1 - 30): 10
-Select Mortgage Type: 1) Fixed  2) Adjustable,
-Choice (1-2): 1,
-Equal to another mortgage with same terms? true
+    Principal (5000 - 600000): 100000,
+    Annual Interest Rate (3 - 50 percent): 5,
+    Years (1 - 30): 10
+    Select Mortgage Type: 1) Fixed  2) Adjustable,
+    Choice (1-2): 1,
+    Equal to another mortgage with same terms? true
 
 # Mortgage
 
-Type: FixedRateMortgage
-Monthly Payment: \$1,060.66
+    Type: FixedRateMortgage
+    Monthly Payment: \$1,060.66
 
 # Payment Schedule
 
-Month   1:     \$99,356.01
-Month   2:     \$98,709.34
-...
-Month 120:     \$0.00
+    Month   1:     \$99,356.01
+    Month   2:     \$98,709.34
+    ...
+    Month 120:     \$0.00
 
-Do you want to calculate again? (y/n):
+    Do you want to calculate again? (y/n):
 
 ---
 
-# 🔬 Generics Demo Output
+# 🔬 Collections Demo Output
 
---- DEMO: Generics Features ---
-All mortgages in repository:
-- FixedRateMortgage { principal= 100000, rate= 5%, years= 1 }
-- AdjustableRateMortgage { principal= 150000, rate= 4.5%, years= 2 }
+    📊 FINAL SUMMARY (Collections Demo)
+    1. All your mortgages (List - maintains order):
+    📝 FixedRateMortgage { principal=100000, rate=3.8%, years=10 }
 
-Most expensive mortgage (using GenericUtils.findMax): 
-FixedRateMortgage { principal= 100000, rate= 5%, years= 1 }
-Total monthly payments (using wildcard): $1,060.66
+    2. Unique mortgages (Set - removes duplicates):
+    🔄 FixedRateMortgage { principal=100000, rate=3.8%, years=10 }
+    Original: 3, Unique: 3
 
-# 🏗️ Enhanced Project Structure
+    3. Processing queue (Queue - FIFO order):
+    🎯 Processing #1: FixedRateMortgage { principal=100000, rate=3.8%, years=10 }
 
-src/com/example/
-├── [All v2.1.0 files...]
-├── Repository.java           # Generic repository interface
-├── MortgageRepository.java   # Repository implementation  
-├── GenericUtils.java         # Generic utility methods
-└── MortgageComparators.java  # Comparator factory
+    4. Quick lookup (Map - by hashCode):
+    🔑 Key: 123456 → FixedRateMortgage
+
+    5. Advanced sorting (Streams + Comparators):
+    💰 100000 - 3.8%
+    📈 3.8% - $100000
+    ⚠️  5.0% - $250000
+
+    6. Aggregate calculations:
+    Total monthly payments: $3,500.72
+    Most expensive overall: FixedRateMortgage { principal=250000, rate=5.0%, years=30 }
+    Average principal: $166,666.67
 
 ````
 
@@ -90,15 +98,15 @@ src/com/example/
    git clone https://github.com/AmirReaper/mortgage-calculator-java.git
 ````
 
-2. Open in your IDE.
-3. Run `Main.java`.
+    2. Open in your IDE.
+    3. Run `Main.java`.
 
 ---
 
 ## 👨‍💻 Author
 
-**Amir Reza Tabrizi**
+    **Amir Reza Tabrizi**
 
-* [GitHub Profile](https://github.com/AmirReaper)
+    * [GitHub Profile](https://github.com/AmirReaper)
 
 ⭐ If you found this project useful, please give it a star!
