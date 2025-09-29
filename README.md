@@ -63,7 +63,7 @@ src/com/example/
 
 ---
 
-## 📷 Sample Run
+# 📷 Sample Run
 
 ```
 
@@ -74,12 +74,12 @@ src/com/example/
     Choice (1-2): 1,
     Equal to another mortgage with same terms? true
 
-# Mortgage
+## Mortgage
 
     Type: FixedRateMortgage
     Monthly Payment: \$1,060.66
 
-# Payment Schedule
+## Payment Schedule
 
     Month   1:     \$99,356.01
     Month   2:     \$98,709.34
