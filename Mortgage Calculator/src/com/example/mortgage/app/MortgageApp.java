@@ -16,22 +16,22 @@ public class MortgageApp {
         boolean keepRunning = true;
 
         while (keepRunning) {
-            // استفاده از سرویس‌های جداگانه
+            // Using separate services
             Mortgage mortgage = MortgageInputHandler.getMortgageFromUser();
             MortgageComparatorService.compareWithSameTerms(mortgage);
             MortgageAdjuster.adjustIfARM(mortgage);
             MortgageReportService.generateReport(mortgage);
 
-            // ذخیره وام کاربر و نمایش مقایسه
+            // Save user loan and show comparison
             userMortgages.add(mortgage);
             showUserComparison(mortgage);
 
-            // ادامه برنامه؟
+            // continue the program?
             String again = com.example.service.Console.readYesNo("\nDo you want to calculate again? (y/n): ");
             keepRunning = again.equals("yes");
         }
 
-        // خلاصه نهایی
+        // Final summary
         showFinalSummary();
         System.out.println("Thanks for using the Mortgage Calculator v2.3.1!");
     }
